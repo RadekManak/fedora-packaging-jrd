@@ -1,13 +1,14 @@
 Summary: Application for extraction and decompilation of JVM byte code
 Name: java-runtime-decompiler
 Version: 2.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv3
 URL: https://github.com/pmikova/java-runtime-decompiler
 Source0: https://github.com/pmikova/%{name}/archive/%{name}-%{version}.tar.gz
 Source1: java-runtime-decompiler
 Source2: java-runtime-decompiler.1
 Source3: jrd.desktop
+Patch1: systemFernflower.patch
 BuildArch: noarch
 BuildRequires: maven-local
 BuildRequires: byteman
@@ -17,6 +18,7 @@ BuildRequires: java-devel = 1:1.8.0
 BuildRequires: google-gson
 BuildRequires: desktop-file-utils
 Requires: java-devel = 1:1.8.0
+Recommends: fernflower
 
 %description
 This application can access JVM memory at runtime,
@@ -30,6 +32,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch1
 
 %build
 pushd runtime-decompiler
@@ -73,6 +76,10 @@ desktop-file-install --vendor="fedora"                     \
 %license LICENSE
 
 %changelog
+* Thu Jan 10 2019 Jiri Vanek <jvanek@redhat.com> - 2.0-3
+- added depndence of fernflower decompiler
+- added and applied Patch1, systemFernflower.patch to enable system fernflower
+
 * Wed Nov 28 2018 Petra Mikova <petra.alice.mikova@gmail.com> - 2.0-2
 - fixed changelog
 
