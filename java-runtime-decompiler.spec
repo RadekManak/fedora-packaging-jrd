@@ -10,6 +10,7 @@ Source2: java-runtime-decompiler.1
 Source3: jrd.desktop
 Patch1: systemFernflower.patch
 Patch2: systemProcyon.patch
+Patch3: includeLambdas.patch
 BuildArch: noarch
 BuildRequires: maven-local
 BuildRequires: byteman
@@ -36,6 +37,7 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 %patch1
 %patch2
+%patch3
 
 %build
 pushd runtime-decompiler
@@ -82,6 +84,7 @@ desktop-file-install --vendor="fedora"                     \
 * Thu Jan 17 2019 Jiri Vanek <jvanek@redhat.com> - 2.0-4
 - added depndence of procyon decompiler (currenlty under review
 - added and applied Patch2, systemProcyon.patch to enable system procyon out of thebox
+- added and applied Patch3, includeLambdas.patch to at least list lamdas untill fixed in upstream
 
 * Thu Jan 10 2019 Jiri Vanek <jvanek@redhat.com> - 2.0-3
 - added depndence of fernflower decompiler
