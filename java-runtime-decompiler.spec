@@ -1,7 +1,7 @@
 Summary: Application for extraction and decompilation of JVM byte code
 Name: java-runtime-decompiler
 Version: 2.0
-Release: 4%{?dist}
+Release: 5%{?dist}
 License: GPLv3
 URL: https://github.com/pmikova/java-runtime-decompiler
 Source0: https://github.com/pmikova/%{name}/archive/%{name}-%{version}.tar.gz
@@ -81,6 +81,9 @@ desktop-file-install --vendor="fedora"                     \
 %license LICENSE
 
 %changelog
+* Thu Jan 17 2019 Jiri Vanek <jvanek@redhat.com> - 2.0-5
+- improved Patch3, includeLambdas.patch to sort the lamdas t the bottom
+
 * Thu Jan 17 2019 Jiri Vanek <jvanek@redhat.com> - 2.0-4
 - added depndence of procyon decompiler (currenlty under review
 - added and applied Patch2, systemProcyon.patch to enable system procyon out of thebox
