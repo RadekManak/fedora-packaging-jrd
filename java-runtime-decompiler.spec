@@ -1,7 +1,7 @@
 Summary: Application for extraction and decompilation of JVM byte code
 Name: java-runtime-decompiler
-Version: 2.0
-Release: 7%{?dist}
+Version: 3.0
+Release: 1%{?dist}
 License: GPLv3
 URL: https://github.com/pmikova/java-runtime-decompiler
 Source0: https://github.com/pmikova/%{name}/archive/%{name}-%{version}.tar.gz
@@ -10,7 +10,6 @@ Source2: java-runtime-decompiler.1
 Source3: jrd.desktop
 Patch1: systemFernflower.patch
 Patch2: systemProcyon.patch
-Patch3: includeLambdas.patch
 BuildArch: noarch
 BuildRequires: maven-local
 BuildRequires: byteman
@@ -35,9 +34,8 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch1
-%patch2
-%patch3
+%patch1 -p0
+%patch2 -p0
 
 %build
 pushd runtime-decompiler
@@ -81,6 +79,10 @@ desktop-file-install --vendor="fedora"                     \
 %license LICENSE
 
 %changelog
+* Mon Aug 26 2019 Jiri Vanek <jvanek@redhat.com> - 3.0-0
+- moved to usptream version 3.0
+- adjusted configs, removed lambda patch
+
 * Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 2.0-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 

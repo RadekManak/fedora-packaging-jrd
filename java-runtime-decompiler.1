@@ -1,4 +1,4 @@
-.TH java-runtime-decompiler 1 "05 September 2018" "version 2.0"
+.TH java-runtime-decompiler 1 "26 August 2019" "version 3.0"
 .SH NAME
 java-runtime-decompiler \- launch java-runtime decompiler GUI
 .SH SYNOPSIS
@@ -22,5 +22,11 @@ Print on stdout binary form of given class loaded in JVM with given PID/URL.
 Print on stdout binary form encoded in base64 of given class loaded in JVM with given PID/URL.
 .IP "-decompile pid-xor-url class-name config-file"
 Print on stdout decompiled class, needs PID/URL of JVM, class name and name/file with decompiler configuration, can use javap disassembler. To pass arguments to the disassembler, add them to javap without spaces (e.g. javap-v).
+.IP "-overwrite pid/urlOfJVM  classToOverwrite fileWithNewBytecode"
+three args - pid or url of JVM and class to overwrite and file with new bytecode
 .SH AUTHOR
 Petra Alice Mikova (petra.alice.mikova@gmail.com)
+Jiri Vanek (judovana@email.com)
+Radek Manak (Radek.Manak@protonmail.com)
+Ondrej Hrdlicka (ondra.ondrah@seznam.cz)
+
