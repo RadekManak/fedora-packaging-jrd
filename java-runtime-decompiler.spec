@@ -14,9 +14,12 @@ BuildArch: noarch
 BuildRequires: maven-local
 BuildRequires: byteman
 BuildRequires: rsyntaxtextarea
+BuildRequires: junit5
+BuildRequires: ant-junit5
 BuildRequires: junit
 BuildRequires: ant-junit
 BuildRequires: maven-surefire-provider-junit
+BuildRequires: maven-surefire-provider-junit5
 BuildRequires: maven-surefire
 BuildRequires: maven-surefire-plugin
 # depends on devel, not runtime (needs tools.jar)
