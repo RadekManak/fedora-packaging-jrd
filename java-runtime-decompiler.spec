@@ -1,7 +1,7 @@
 Summary: Application for extraction and decompilation of JVM byte code
 Name: java-runtime-decompiler
 Version: 3.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv3
 URL: https://github.com/pmikova/java-runtime-decompiler
 Source0: https://github.com/pmikova/%{name}/archive/%{name}-%{version}.tar.gz
@@ -14,6 +14,11 @@ BuildArch: noarch
 BuildRequires: maven-local
 BuildRequires: byteman
 BuildRequires: rsyntaxtextarea
+BuildRequires: junit
+BuildRequires: ant-junit
+BuildRequires: maven-surefire-provider-junit
+BuildRequires: maven-surefire
+BuildRequires: maven-surefire-plugin
 # depends on devel, not runtime (needs tools.jar)
 BuildRequires: java-devel = 1:1.8.0
 BuildRequires: google-gson
