@@ -87,7 +87,7 @@ desktop-file-install --vendor="fedora"                     \
 %license LICENSE
 
 %changelog
-* Tue Aug 24 2019 Jiri Vanek <jvanek@redhat.com> - 3.0-3
+* Tue Aug 27 2019 Jiri Vanek <jvanek@redhat.com> - 3.0-3
 - all stdouts from customlauncher moved to stderr
 
 * Mon Aug 26 2019 Jiri Vanek <jvanek@redhat.com> - 3.0-0
