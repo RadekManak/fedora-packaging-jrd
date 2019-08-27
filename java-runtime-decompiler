@@ -58,7 +58,7 @@ for cpfile in $CP_FILES; do
 	then
 		cp $cpfile $PLUGIN_HOME
 	else
-		echo "Configuration files were not copied for $FILE_NAME - the existing configuration would be overwritten."
+		echo "Configuration files were not copied for $FILE_NAME - the existing configuration would be overwritten." >&2
 	fi
 done
 
@@ -69,17 +69,17 @@ if [ -e $AGENT ]
 then
 	if grep -Fxq $AGENT_STRING $CONFIG_FILE
 	then
-		echo "Default agent path is already set in $CONFIG_FILE. Skipping agent path setting."
+		echo "Default agent path is already set in $CONFIG_FILE. Skipping agent path setting." >&2
 	elif grep -rq $AGENT_PREFIX $CONFIG_FILE
 	then
 		RESULT_OF_GREP="$(grep -rq $AGENT_PREFIX $CONFIG_FILE)"
-		echo "Agent path is already set in $CONFIG_FILE as ${RESULT_OF_GREP}. Skipping agent path setting."
+		echo "Agent path is already set in $CONFIG_FILE as ${RESULT_OF_GREP}. Skipping agent path setting." >&2
 	else
-		echo  $AGENT_STRING >> $CONFIG_FILE		
+		echo  $AGENT_STRING >> $CONFIG_FILE >&2
 
 	fi
 else
-	echo "Agent was not found and agent path was not set correctly. This has to be done manually in the decompiler GUI, or set AGENT_PATH===path_to_agent_jar in the configuration file: $CONFIG_FILE"
+	echo "Agent was not found and agent path was not set correctly. This has to be done manually in the decompiler GUI, or set AGENT_PATH===path_to_agent_jar in the configuration file: $CONFIG_FILE" >&2
 fi
 
 run  "$@"
