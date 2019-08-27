@@ -75,7 +75,7 @@ then
 		RESULT_OF_GREP="$(grep -rq $AGENT_PREFIX $CONFIG_FILE)"
 		echo "Agent path is already set in $CONFIG_FILE as ${RESULT_OF_GREP}. Skipping agent path setting." >&2
 	else
-		echo  $AGENT_STRING >> $CONFIG_FILE >&2
+		echo  $AGENT_STRING >> $CONFIG_FILE
 
 	fi
 else
