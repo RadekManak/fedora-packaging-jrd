@@ -1,7 +1,7 @@
 Summary: Application for extraction and decompilation of JVM byte code
 Name: java-runtime-decompiler
 Version: 3.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv3
 URL: https://github.com/pmikova/java-runtime-decompiler
 Source0: https://github.com/pmikova/%{name}/archive/%{name}-%{version}.tar.gz
@@ -87,6 +87,9 @@ desktop-file-install --vendor="fedora"                     \
 %license LICENSE
 
 %changelog
+* Tue Aug 24 2019 Jiri Vanek <jvanek@redhat.com> - 3.0-3
+- all stdouts from customlauncher moved to stderr
+
 * Mon Aug 26 2019 Jiri Vanek <jvanek@redhat.com> - 3.0-0
 - moved to usptream version 3.0
 - adjusted configs, removed lambda patch
