@@ -87,7 +87,7 @@ desktop-file-install --vendor="fedora"                     \
 %license LICENSE
 
 %changelog
-* Tue Aug 27 2019 Jiri Vanek <jvanek@redhat.com> - 3.0-4
+* Tue Mar 17 2020 Jiri Vanek <jvanek@redhat.com> - 3.0-6
 - changed jdk8 requirement
 
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-5
