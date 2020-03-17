@@ -1,7 +1,7 @@
 Summary: Application for extraction and decompilation of JVM byte code
 Name: java-runtime-decompiler
 Version: 3.0
-Release: 5%{?dist}
+Release: 6%{?dist}
 License: GPLv3
 URL: https://github.com/pmikova/java-runtime-decompiler
 Source0: https://github.com/pmikova/%{name}/archive/%{name}-%{version}.tar.gz
@@ -23,10 +23,10 @@ BuildRequires: maven-surefire-provider-junit5
 BuildRequires: maven-surefire
 BuildRequires: maven-surefire-plugin
 # depends on devel, not runtime (needs tools.jar)
-BuildRequires: java-devel = 1:1.8.0
+BuildRequires: java-1.8.0-devel
 BuildRequires: google-gson
 BuildRequires: desktop-file-utils
-Requires: java-devel = 1:1.8.0
+Requires: java-1.8.0-devel
 Recommends: fernflower
 Recommends: procyon-decompiler
 
@@ -87,6 +87,9 @@ desktop-file-install --vendor="fedora"                     \
 %license LICENSE
 
 %changelog
+* Tue Aug 27 2019 Jiri Vanek <jvanek@redhat.com> - 3.0-4
+- changed jdk8 requirement
+
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.0-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
