@@ -1,7 +1,7 @@
 Summary: Application for extraction and decompilation of JVM byte code
 Name: java-runtime-decompiler
 Version: 3.0
-Release: 6%{?dist}
+Release: 7%{?dist}
 License: GPLv3
 URL: https://github.com/pmikova/java-runtime-decompiler
 Source0: https://github.com/pmikova/%{name}/archive/%{name}-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source2: java-runtime-decompiler.1
 Source3: jrd.desktop
 Patch1: systemFernflower.patch
 Patch2: systemProcyon.patch
+Patch3: rsyntaxVersion.patch
 BuildArch: noarch
 BuildRequires: maven-local
 BuildRequires: byteman
@@ -44,6 +45,7 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 %patch1 -p0
 %patch2 -p0
+%patch3 -p0
 
 %build
 pushd runtime-decompiler
@@ -51,7 +53,7 @@ pushd runtime-decompiler
 %pom_add_dep com.sun:tools
 %pom_remove_plugin :maven-jar-plugin
 popd
-%mvn_build 
+%mvn_build --xmvn-javadoc
 
 %install
 %mvn_install
@@ -87,6 +89,9 @@ desktop-file-install --vendor="fedora"                     \
 %license LICENSE
 
 %changelog
+* Tue Mar 17 2020 Jiri Vanek <jvanek@redhat.com> - 3.0-7
+- aligned rsyntaxtextarea version, fixed javadoc generation
+
 * Tue Mar 17 2020 Jiri Vanek <jvanek@redhat.com> - 3.0-6
 - changed jdk8 requirement
 
