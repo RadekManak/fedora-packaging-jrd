@@ -1,10 +1,12 @@
+%define build_timestamp %{lua: print(os.date("%Y%m%d"))}
+
 Summary: Application for extraction and decompilation of JVM byte code
 Name: java-runtime-decompiler
 Version: 3.0
-Release: 9%{?dist}
+Release: %{build_timestamp}git%{?dist}
 License: GPLv3
 URL: https://github.com/pmikova/java-runtime-decompiler
-Source0: https://github.com/pmikova/%{name}/archive/%{name}-%{version}.tar.gz
+Source0: https://github.com/pmikova/java-runtime-decompiler/archive/master.tar.gz#/%{name}-%{version}.tar.gz
 Source1: java-runtime-decompiler
 Source2: java-runtime-decompiler.1
 Source3: jrd.desktop
@@ -24,10 +26,10 @@ BuildRequires: maven-surefire-provider-junit5
 BuildRequires: maven-surefire
 BuildRequires: maven-surefire-plugin
 # depends on devel, not runtime (needs tools.jar)
-BuildRequires: java-1.8.0-devel
+BuildRequires: java-11-openjdk-devel
 BuildRequires: google-gson
 BuildRequires: desktop-file-utils
-Requires: java-1.8.0-devel
+Requires: java-11-openjdk-devel
 Recommends: fernflower
 Recommends: procyon-decompiler
 
@@ -42,15 +44,13 @@ Requires: %{name} = %{version}-%{release}
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q -n %{name}-master
 %patch1 -p0
 %patch2 -p0
 %patch3 -p0
 
 %build
 pushd runtime-decompiler
-%pom_remove_dep com.sun:tools
-%pom_add_dep com.sun:tools
 %pom_remove_plugin :maven-jar-plugin
 popd
 %mvn_build --xmvn-javadoc
@@ -63,7 +63,7 @@ install -m 644 %{SOURCE2} $RPM_BUILD_ROOT%{_mandir}/man1/
 install -d -m 755 $RPM_BUILD_ROOT%{_bindir}
 install -m 755 %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/
 install -d -m 755 $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/
-cp -r %{_builddir}/%{name}-%{name}-%{version}/runtime-decompiler/src/plugins/ $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/
+cp -r %{_builddir}/%{name}-master/runtime-decompiler/src/plugins/ $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/
 
 install -d -m 755 $RPM_BUILD_ROOT%{_datadir}/applications
 desktop-file-install --vendor="fedora"                     \

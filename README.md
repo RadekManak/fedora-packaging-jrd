@@ -1,3 +1,3 @@
 # java-runtime-decompiler
 
-The java-runtime-decompiler package
+Files for building RPMs for JDR from git
